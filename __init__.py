@@ -2,89 +2,59 @@
 
 from __future__ import annotations
 
-from .model import Model as Model
-from .usage import Usage as Usage
-from .shared import (
-    ErrorObject as ErrorObject,
-    BillingError as BillingError,
-    ErrorResponse as ErrorResponse,
-    NotFoundError as NotFoundError,
-    APIErrorObject as APIErrorObject,
-    RateLimitError as RateLimitError,
-    OverloadedError as OverloadedError,
-    PermissionError as PermissionError,
-    AuthenticationError as AuthenticationError,
-    GatewayTimeoutError as GatewayTimeoutError,
-    InvalidRequestError as InvalidRequestError,
-)
-from .message import Message as Message
-from .beta_error import BetaError as BetaError
-from .completion import Completion as Completion
-from .model_info import ModelInfo as ModelInfo
-from .text_block import TextBlock as TextBlock
-from .text_delta import TextDelta as TextDelta
-from .tool_param import ToolParam as ToolParam
-from .model_param import ModelParam as ModelParam
-from .content_block import ContentBlock as ContentBlock
-from .message_param import MessageParam as MessageParam
-from .text_citation import TextCitation as TextCitation
-from .beta_api_error import BetaAPIError as BetaAPIError
-from .metadata_param import MetadataParam as MetadataParam
-from .tool_use_block import ToolUseBlock as ToolUseBlock
-from .citations_delta import CitationsDelta as CitationsDelta
-from .input_json_delta import InputJSONDelta as InputJSONDelta
-from .text_block_param import TextBlockParam as TextBlockParam
-from .image_block_param import ImageBlockParam as ImageBlockParam
+from .beta_usage import BetaUsage as BetaUsage
+from .beta_message import BetaMessage as BetaMessage
+from .beta_model_info import BetaModelInfo as BetaModelInfo
+from .beta_text_block import BetaTextBlock as BetaTextBlock
+from .beta_text_delta import BetaTextDelta as BetaTextDelta
+from .beta_tool_param import BetaToolParam as BetaToolParam
 from .model_list_params import ModelListParams as ModelListParams
-from .tool_choice_param import ToolChoiceParam as ToolChoiceParam
-from .beta_billing_error import BetaBillingError as BetaBillingError
-from .message_stop_event import MessageStopEvent as MessageStopEvent
-from .beta_error_response import BetaErrorResponse as BetaErrorResponse
-from .content_block_param import ContentBlockParam as ContentBlockParam
-from .message_delta_event import MessageDeltaEvent as MessageDeltaEvent
-from .message_delta_usage import MessageDeltaUsage as MessageDeltaUsage
-from .message_start_event import MessageStartEvent as MessageStartEvent
-from .text_citation_param import TextCitationParam as TextCitationParam
-from .anthropic_beta_param import AnthropicBetaParam as AnthropicBetaParam
-from .beta_not_found_error import BetaNotFoundError as BetaNotFoundError
-from .document_block_param import DocumentBlockParam as DocumentBlockParam
-from .message_stream_event import MessageStreamEvent as MessageStreamEvent
-from .message_tokens_count import MessageTokensCount as MessageTokensCount
-from .tool_use_block_param import ToolUseBlockParam as ToolUseBlockParam
-from .beta_overloaded_error import BetaOverloadedError as BetaOverloadedError
-from .beta_permission_error import BetaPermissionError as BetaPermissionError
-from .beta_rate_limit_error import BetaRateLimitError as BetaRateLimitError
+from .beta_content_block import BetaContentBlock as BetaContentBlock
+from .beta_message_param import BetaMessageParam as BetaMessageParam
+from .beta_text_citation import BetaTextCitation as BetaTextCitation
+from .beta_metadata_param import BetaMetadataParam as BetaMetadataParam
+from .beta_tool_use_block import BetaToolUseBlock as BetaToolUseBlock
+from .beta_citations_delta import BetaCitationsDelta as BetaCitationsDelta
+from .beta_input_json_delta import BetaInputJSONDelta as BetaInputJSONDelta
+from .beta_text_block_param import BetaTextBlockParam as BetaTextBlockParam
+from .beta_tool_union_param import BetaToolUnionParam as BetaToolUnionParam
 from .message_create_params import MessageCreateParams as MessageCreateParams
-from .tool_choice_any_param import ToolChoiceAnyParam as ToolChoiceAnyParam
-from .citation_char_location import CitationCharLocation as CitationCharLocation
-from .citation_page_location import CitationPageLocation as CitationPageLocation
-from .citations_config_param import CitationsConfigParam as CitationsConfigParam
-from .raw_message_stop_event import RawMessageStopEvent as RawMessageStopEvent
-from .tool_choice_auto_param import ToolChoiceAutoParam as ToolChoiceAutoParam
-from .tool_choice_tool_param import ToolChoiceToolParam as ToolChoiceToolParam
-from .base64_pdf_source_param import Base64PDFSourceParam as Base64PDFSourceParam
-from .plain_text_source_param import PlainTextSourceParam as PlainTextSourceParam
-from .raw_message_delta_event import RawMessageDeltaEvent as RawMessageDeltaEvent
-from .raw_message_start_event import RawMessageStartEvent as RawMessageStartEvent
-from .tool_result_block_param import ToolResultBlockParam as ToolResultBlockParam
-from .completion_create_params import CompletionCreateParams as CompletionCreateParams
-from .content_block_stop_event import ContentBlockStopEvent as ContentBlockStopEvent
-from .raw_message_stream_event import RawMessageStreamEvent as RawMessageStreamEvent
-from .beta_authentication_error import BetaAuthenticationError as BetaAuthenticationError
-from .content_block_delta_event import ContentBlockDeltaEvent as ContentBlockDeltaEvent
-from .content_block_start_event import ContentBlockStartEvent as ContentBlockStartEvent
-from .beta_gateway_timeout_error import BetaGatewayTimeoutError as BetaGatewayTimeoutError
-from .beta_invalid_request_error import BetaInvalidRequestError as BetaInvalidRequestError
-from .content_block_source_param import ContentBlockSourceParam as ContentBlockSourceParam
+from .beta_image_block_param import BetaImageBlockParam as BetaImageBlockParam
+from .beta_tool_choice_param import BetaToolChoiceParam as BetaToolChoiceParam
+from .beta_content_block_param import BetaContentBlockParam as BetaContentBlockParam
+from .beta_message_delta_usage import BetaMessageDeltaUsage as BetaMessageDeltaUsage
+from .beta_text_citation_param import BetaTextCitationParam as BetaTextCitationParam
+from .beta_message_tokens_count import BetaMessageTokensCount as BetaMessageTokensCount
+from .beta_tool_use_block_param import BetaToolUseBlockParam as BetaToolUseBlockParam
+from .beta_tool_choice_any_param import BetaToolChoiceAnyParam as BetaToolChoiceAnyParam
+from .beta_base64_pdf_block_param import BetaBase64PDFBlockParam as BetaBase64PDFBlockParam
+from .beta_citation_char_location import BetaCitationCharLocation as BetaCitationCharLocation
+from .beta_citation_page_location import BetaCitationPageLocation as BetaCitationPageLocation
+from .beta_citations_config_param import BetaCitationsConfigParam as BetaCitationsConfigParam
+from .beta_raw_message_stop_event import BetaRawMessageStopEvent as BetaRawMessageStopEvent
+from .beta_tool_choice_auto_param import BetaToolChoiceAutoParam as BetaToolChoiceAutoParam
+from .beta_tool_choice_tool_param import BetaToolChoiceToolParam as BetaToolChoiceToolParam
 from .message_count_tokens_params import MessageCountTokensParams as MessageCountTokensParams
-from .citation_char_location_param import CitationCharLocationParam as CitationCharLocationParam
-from .citation_page_location_param import CitationPageLocationParam as CitationPageLocationParam
-from .raw_content_block_stop_event import RawContentBlockStopEvent as RawContentBlockStopEvent
-from .cache_control_ephemeral_param import CacheControlEphemeralParam as CacheControlEphemeralParam
-from .raw_content_block_delta_event import RawContentBlockDeltaEvent as RawContentBlockDeltaEvent
-from .raw_content_block_start_event import RawContentBlockStartEvent as RawContentBlockStartEvent
-from .citation_content_block_location import CitationContentBlockLocation as CitationContentBlockLocation
-from .content_block_source_content_param import ContentBlockSourceContentParam as ContentBlockSourceContentParam
-from .citation_content_block_location_param import (
-    CitationContentBlockLocationParam as CitationContentBlockLocationParam,
+from .beta_base64_pdf_source_param import BetaBase64PDFSourceParam as BetaBase64PDFSourceParam
+from .beta_plain_text_source_param import BetaPlainTextSourceParam as BetaPlainTextSourceParam
+from .beta_raw_message_delta_event import BetaRawMessageDeltaEvent as BetaRawMessageDeltaEvent
+from .beta_raw_message_start_event import BetaRawMessageStartEvent as BetaRawMessageStartEvent
+from .beta_tool_result_block_param import BetaToolResultBlockParam as BetaToolResultBlockParam
+from .beta_raw_message_stream_event import BetaRawMessageStreamEvent as BetaRawMessageStreamEvent
+from .beta_tool_bash_20241022_param import BetaToolBash20241022Param as BetaToolBash20241022Param
+from .beta_content_block_source_param import BetaContentBlockSourceParam as BetaContentBlockSourceParam
+from .beta_citation_char_location_param import BetaCitationCharLocationParam as BetaCitationCharLocationParam
+from .beta_citation_page_location_param import BetaCitationPageLocationParam as BetaCitationPageLocationParam
+from .beta_raw_content_block_stop_event import BetaRawContentBlockStopEvent as BetaRawContentBlockStopEvent
+from .beta_cache_control_ephemeral_param import BetaCacheControlEphemeralParam as BetaCacheControlEphemeralParam
+from .beta_raw_content_block_delta_event import BetaRawContentBlockDeltaEvent as BetaRawContentBlockDeltaEvent
+from .beta_raw_content_block_start_event import BetaRawContentBlockStartEvent as BetaRawContentBlockStartEvent
+from .beta_citation_content_block_location import BetaCitationContentBlockLocation as BetaCitationContentBlockLocation
+from .beta_tool_text_editor_20241022_param import BetaToolTextEditor20241022Param as BetaToolTextEditor20241022Param
+from .beta_tool_computer_use_20241022_param import BetaToolComputerUse20241022Param as BetaToolComputerUse20241022Param
+from .beta_content_block_source_content_param import (
+    BetaContentBlockSourceContentParam as BetaContentBlockSourceContentParam,
+)
+from .beta_citation_content_block_location_param import (
+    BetaCitationContentBlockLocationParam as BetaCitationContentBlockLocationParam,
 )
