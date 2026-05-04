@@ -1,106 +1,90 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from . import types
-from ._types import NOT_GIVEN, Omit, NoneType, NotGiven, Transport, ProxiesTypes
-from ._utils import file_from_path
-from ._client import (
-    Client,
-    Stream,
-    Timeout,
-    Anthropic,
-    Transport,
-    AsyncClient,
-    AsyncStream,
-    AsyncAnthropic,
-    RequestOptions,
+from __future__ import annotations
+
+from .model import Model as Model
+from .usage import Usage as Usage
+from .shared import (
+    ErrorObject as ErrorObject,
+    BillingError as BillingError,
+    ErrorResponse as ErrorResponse,
+    NotFoundError as NotFoundError,
+    APIErrorObject as APIErrorObject,
+    RateLimitError as RateLimitError,
+    OverloadedError as OverloadedError,
+    PermissionError as PermissionError,
+    AuthenticationError as AuthenticationError,
+    GatewayTimeoutError as GatewayTimeoutError,
+    InvalidRequestError as InvalidRequestError,
 )
-from ._models import BaseModel
-from ._version import __title__, __version__
-from ._response import APIResponse as APIResponse, AsyncAPIResponse as AsyncAPIResponse
-from ._constants import (
-    AI_PROMPT as AI_PROMPT,
-    HUMAN_PROMPT as HUMAN_PROMPT,
-    DEFAULT_TIMEOUT,
-    DEFAULT_MAX_RETRIES,
-    DEFAULT_CONNECTION_LIMITS,
+from .message import Message as Message
+from .beta_error import BetaError as BetaError
+from .completion import Completion as Completion
+from .model_info import ModelInfo as ModelInfo
+from .text_block import TextBlock as TextBlock
+from .text_delta import TextDelta as TextDelta
+from .tool_param import ToolParam as ToolParam
+from .model_param import ModelParam as ModelParam
+from .content_block import ContentBlock as ContentBlock
+from .message_param import MessageParam as MessageParam
+from .text_citation import TextCitation as TextCitation
+from .beta_api_error import BetaAPIError as BetaAPIError
+from .metadata_param import MetadataParam as MetadataParam
+from .tool_use_block import ToolUseBlock as ToolUseBlock
+from .citations_delta import CitationsDelta as CitationsDelta
+from .input_json_delta import InputJSONDelta as InputJSONDelta
+from .text_block_param import TextBlockParam as TextBlockParam
+from .image_block_param import ImageBlockParam as ImageBlockParam
+from .model_list_params import ModelListParams as ModelListParams
+from .tool_choice_param import ToolChoiceParam as ToolChoiceParam
+from .beta_billing_error import BetaBillingError as BetaBillingError
+from .message_stop_event import MessageStopEvent as MessageStopEvent
+from .beta_error_response import BetaErrorResponse as BetaErrorResponse
+from .content_block_param import ContentBlockParam as ContentBlockParam
+from .message_delta_event import MessageDeltaEvent as MessageDeltaEvent
+from .message_delta_usage import MessageDeltaUsage as MessageDeltaUsage
+from .message_start_event import MessageStartEvent as MessageStartEvent
+from .text_citation_param import TextCitationParam as TextCitationParam
+from .anthropic_beta_param import AnthropicBetaParam as AnthropicBetaParam
+from .beta_not_found_error import BetaNotFoundError as BetaNotFoundError
+from .document_block_param import DocumentBlockParam as DocumentBlockParam
+from .message_stream_event import MessageStreamEvent as MessageStreamEvent
+from .message_tokens_count import MessageTokensCount as MessageTokensCount
+from .tool_use_block_param import ToolUseBlockParam as ToolUseBlockParam
+from .beta_overloaded_error import BetaOverloadedError as BetaOverloadedError
+from .beta_permission_error import BetaPermissionError as BetaPermissionError
+from .beta_rate_limit_error import BetaRateLimitError as BetaRateLimitError
+from .message_create_params import MessageCreateParams as MessageCreateParams
+from .tool_choice_any_param import ToolChoiceAnyParam as ToolChoiceAnyParam
+from .citation_char_location import CitationCharLocation as CitationCharLocation
+from .citation_page_location import CitationPageLocation as CitationPageLocation
+from .citations_config_param import CitationsConfigParam as CitationsConfigParam
+from .raw_message_stop_event import RawMessageStopEvent as RawMessageStopEvent
+from .tool_choice_auto_param import ToolChoiceAutoParam as ToolChoiceAutoParam
+from .tool_choice_tool_param import ToolChoiceToolParam as ToolChoiceToolParam
+from .base64_pdf_source_param import Base64PDFSourceParam as Base64PDFSourceParam
+from .plain_text_source_param import PlainTextSourceParam as PlainTextSourceParam
+from .raw_message_delta_event import RawMessageDeltaEvent as RawMessageDeltaEvent
+from .raw_message_start_event import RawMessageStartEvent as RawMessageStartEvent
+from .tool_result_block_param import ToolResultBlockParam as ToolResultBlockParam
+from .completion_create_params import CompletionCreateParams as CompletionCreateParams
+from .content_block_stop_event import ContentBlockStopEvent as ContentBlockStopEvent
+from .raw_message_stream_event import RawMessageStreamEvent as RawMessageStreamEvent
+from .beta_authentication_error import BetaAuthenticationError as BetaAuthenticationError
+from .content_block_delta_event import ContentBlockDeltaEvent as ContentBlockDeltaEvent
+from .content_block_start_event import ContentBlockStartEvent as ContentBlockStartEvent
+from .beta_gateway_timeout_error import BetaGatewayTimeoutError as BetaGatewayTimeoutError
+from .beta_invalid_request_error import BetaInvalidRequestError as BetaInvalidRequestError
+from .content_block_source_param import ContentBlockSourceParam as ContentBlockSourceParam
+from .message_count_tokens_params import MessageCountTokensParams as MessageCountTokensParams
+from .citation_char_location_param import CitationCharLocationParam as CitationCharLocationParam
+from .citation_page_location_param import CitationPageLocationParam as CitationPageLocationParam
+from .raw_content_block_stop_event import RawContentBlockStopEvent as RawContentBlockStopEvent
+from .cache_control_ephemeral_param import CacheControlEphemeralParam as CacheControlEphemeralParam
+from .raw_content_block_delta_event import RawContentBlockDeltaEvent as RawContentBlockDeltaEvent
+from .raw_content_block_start_event import RawContentBlockStartEvent as RawContentBlockStartEvent
+from .citation_content_block_location import CitationContentBlockLocation as CitationContentBlockLocation
+from .content_block_source_content_param import ContentBlockSourceContentParam as ContentBlockSourceContentParam
+from .citation_content_block_location_param import (
+    CitationContentBlockLocationParam as CitationContentBlockLocationParam,
 )
-from ._exceptions import (
-    APIError,
-    ConflictError,
-    NotFoundError,
-    AnthropicError,
-    APIStatusError,
-    RateLimitError,
-    APITimeoutError,
-    BadRequestError,
-    APIConnectionError,
-    AuthenticationError,
-    InternalServerError,
-    PermissionDeniedError,
-    UnprocessableEntityError,
-    APIResponseValidationError,
-)
-from ._base_client import DefaultHttpxClient, DefaultAsyncHttpxClient
-from ._utils._logs import setup_logging as _setup_logging
-
-__all__ = [
-    "types",
-    "__version__",
-    "__title__",
-    "NoneType",
-    "Transport",
-    "ProxiesTypes",
-    "NotGiven",
-    "NOT_GIVEN",
-    "Omit",
-    "AnthropicError",
-    "APIError",
-    "APIStatusError",
-    "APITimeoutError",
-    "APIConnectionError",
-    "APIResponseValidationError",
-    "BadRequestError",
-    "AuthenticationError",
-    "PermissionDeniedError",
-    "NotFoundError",
-    "ConflictError",
-    "UnprocessableEntityError",
-    "RateLimitError",
-    "InternalServerError",
-    "Timeout",
-    "RequestOptions",
-    "Client",
-    "AsyncClient",
-    "Stream",
-    "AsyncStream",
-    "Anthropic",
-    "AsyncAnthropic",
-    "file_from_path",
-    "BaseModel",
-    "DEFAULT_TIMEOUT",
-    "DEFAULT_MAX_RETRIES",
-    "DEFAULT_CONNECTION_LIMITS",
-    "DefaultHttpxClient",
-    "DefaultAsyncHttpxClient",
-    "HUMAN_PROMPT",
-    "AI_PROMPT",
-]
-
-from .lib.vertex import *
-from .lib.bedrock import *
-from .lib.streaming import *
-
-_setup_logging()
-
-# Update the __module__ attribute for exported symbols so that
-# error messages point to this module instead of the module
-# it was originally defined in, e.g.
-# anthropic._exceptions.NotFoundError -> anthropic.NotFoundError
-__locals = locals()
-for __name in __all__:
-    if not __name.startswith("__"):
-        try:
-            __locals[__name].__module__ = "anthropic"
-        except (TypeError, AttributeError):
-            # Some of our exported symbols are builtins which we can't set attributes for.
-            pass
