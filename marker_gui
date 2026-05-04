@@ -1,0 +1,6 @@
+#!/Users/nicolldavis/pdf_converter/bin/python3.11
+import sys
+from marker.scripts.run_streamlit_app import streamlit_app_cli
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(streamlit_app_cli())

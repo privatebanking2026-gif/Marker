@@ -1,0 +1,6 @@
+#!/Users/nicolldavis/pdf_converter/bin/python3.11
+import sys
+from marker.scripts.server import server_cli
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(server_cli())
